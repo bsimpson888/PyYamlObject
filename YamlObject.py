@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+import sys
 
 __author__ = 'Marco Bartel'
 
@@ -26,7 +27,10 @@ class YamlObject(object):
         return "<YamlObject %s>" % data
 
     def __dir__(self):
-        ret = super().__dir__()
+        if sys.version_info[0]==3:
+            ret = super().__dir__()
+        else:
+            ret = set((dir(type(self)) + list(self.__dict__)))
         ret.extend(list(self._data.keys()))
         return ret
 
