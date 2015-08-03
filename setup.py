@@ -1,0 +1,12 @@
+from distutils.core import setup
+
+setup(
+    name='PyYamlObject',
+    version='0.9.1',
+    packages=[''],
+    url='https://github.com/bsimpson888/PyYamlObject',
+    license='GNU GENERAL PUBLIC LICENSE Version 2',
+    author='Marco Bartel',
+    author_email='bsimpson888@gmail.com',
+    description='Object representation of a Yaml file'
+)
