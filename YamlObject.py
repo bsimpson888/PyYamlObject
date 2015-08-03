@@ -6,6 +6,7 @@ __author__ = 'Marco Bartel'
 
 import yaml
 
+
 class YamlObject(object):
 
     @classmethod
@@ -27,10 +28,10 @@ class YamlObject(object):
         return "<YamlObject %s>" % data
 
     def __dir__(self):
-        if sys.version_info[0]==3:
+        if sys.version_info[0] == 3:
             ret = super().__dir__()
         else:
-            ret = set((dir(type(self)) + list(self.__dict__)))
+            ret = list(set((dir(type(self)) + list(self.__dict__))))
         ret.extend(list(self._data.keys()))
         return ret
 
