@@ -5,6 +5,7 @@ Object based representation of a YAML file
 
 imagine you got an yaml file with following content:
 
+```yaml
 database:
     host: localhost
     user: dba
@@ -12,8 +13,9 @@ database:
     dblist:
         - users
         - emails
-        
+``` 
 
+Accessing the dblist would look like this:
 
 ```python
 import YamlObject
