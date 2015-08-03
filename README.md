@@ -15,12 +15,12 @@ database:
         
 
 
-
+```python
 import YamlObject
 
 obj = YamlObject.load("test.yaml")
 dblist = obj.database.dblist
-
+```
 
 
 
