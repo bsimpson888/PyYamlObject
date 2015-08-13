@@ -33,6 +33,12 @@ games:
         realtime:
             - c&c
             - panzers
+Files:
+    -   Path: /etc
+        Exclude: archived
+    -   Path: /repos
+    -   Path: /build
+
         """)
         self.file.close()
         self.obj = YamlObject.load(self.file.name)
@@ -54,3 +60,11 @@ games:
 
     def test_dynamicAccess(self):
         self.assertEqual(self.obj.languages.python, "Elite")
+        self.assertEqual(self.obj.Files[0].Exclude, "archived")
+
+    def test_checkExist(self):
+        self.assertTrue(self.obj)
+        self.assertTrue(self.obj.languages)
+        self.assertFalse(self.obj.wrong)
+        self.assertFalse(self.obj.wrong.verywrong)
+        self.assertFalse(self.obj.wrong.verywrong.veryveryabsent)

@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='PyYamlObject',
-    version='0.9.2',
+    version='0.9.3',
     packages=[''],
     url='https://github.com/bsimpson888/PyYamlObject',
     license='GPL2',

@@ -7,6 +7,13 @@ __author__ = 'Marco Bartel'
 import yaml
 
 
+class YamlNone(object):
+    def __nonzero__(self):
+        return False
+
+    def __getattribute__(self, item):
+        return YamlNone()
+
 class YamlObject(object):
 
     @classmethod
@@ -50,11 +57,24 @@ class YamlObject(object):
         else:
             if item in self._data:
                 data = self._data[item]
+                if isinstance(data, list):
+                    newList = []
+                    for item in data:
+                        if isinstance(item, dict):
+                            item = YamlObject(data=item)
+                        newList.append(item)
+                    data = newList
                 if not isinstance(data, dict):
                     return data
+
+
                 return self.__class__(data, parent=self, name=item)
             else:
-                return object.__getattribute__(item)
+                if item in self.__dict__:
+                    r = object.__getattribute__(item)
+                    return r
+                else:
+                    return YamlNone()
 
 
 
