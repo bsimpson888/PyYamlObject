@@ -11,6 +11,9 @@ class YamlNone(object):
     def __nonzero__(self):
         return False
 
+    def __bool__(self):
+        return False
+
     def __getattribute__(self, item):
         return YamlNone()
 
