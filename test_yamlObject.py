@@ -12,7 +12,7 @@ __author__ = 'Marco Bartel'
 class TestYamlObject(TestCase):
     def setUp(self):
         # generate temporary test yaml file
-        self.file = TemporaryFile(delete=False)
+        self.file = NamedTemporaryFile(delete=False)
         self.file.write(b"""
 # An employee record
 name: Example Developer
